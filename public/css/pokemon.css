@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(4, 128, 41);;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: whitesmoke;
+} 
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    color: black;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  tr:nth-child(even) {
+      background-color: aqua;
+  }
+  tr:nth-child(odd){
+      background-color: lawngreen;
+  }
+  tr{
+      color:black;
+  }
+  h1{
+      text-align: center;
+  }

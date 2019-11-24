@@ -1,6 +1,7 @@
 const express = require('express');
 //var results = require('./results.js');
 const app = express();
+require('dotenv').config();
 const infoController = require("./controllers/infoControllers");
 
 
