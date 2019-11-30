@@ -11,8 +11,8 @@
 <body>
     <h1>POKEMON</h1>
 
-	<input type="number" id="dex" placeholder="Pokedex number"> <button onclick="searchByDex()">Search by Pokedex</button><br>
-	<!--<input type="text" id="name" placeholder="Name"> <button onclick="searchByName()">Search by Name</button><br> -->
+	<input type="number" id="dex" placeholder="Pokedex number"> <button onclick="getDex()">Search by Pokedex</button><br>
+	<input type="text" id="name" placeholder="Name"> <button onclick="searchByName()">Search by Name</button><br>
 
 	<div>
 		<h2>Results</h2>
@@ -21,14 +21,26 @@
                 <th>Pokemon</th>
                 <th>Pokedex</th>
                 <th>type</th>
+                <th>HP</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Special Attack</th>
+                <th>Special Defense</th>
+                <th>Speed</th>
+                <th>Evo num</th>
+                <th>Evolve By</th>
             </tr>
 
         </table>
     </div>
     <script>
-        function searchByDex(){
-            console.log("Searching by dex...");
+        function getDex(){
             let dex = $("#dex").val();
+            searchByDex(dex);
+        }
+        function searchByDex(dex){
+            console.log("Searching by dex...");
+            
             console.log("Dex: " + dex);
 
             $.get("/getInfo", {dex: dex}, function(data){
@@ -36,11 +48,33 @@
                 console.log(data);
                 for (var i = 0; i < data.list.length; i++) {
 			        var pokemon = data.list[i];
+                    var stats = data.listS[i];
+                    var evo = data.listE[i];
                     
-			        $("#tPokemon").append("<tr><td>" + pokemon.name + "</td><td>" + pokemon.pokedex + "</td><td>" + pokemon.type + "</td></tr>");
+                    $("#tPokemon").append("<tr><td>" + pokemon.name + 
+                        "</td><td>" + pokemon.pokedex + "</td><td>" +
+                        pokemon.type + "</td><td>" + stats.hp + 
+                        "</td><td>" + stats.attack + "</td><td>" +
+                        stats.defense + "</td><td>" + stats.sp_attack + 
+                        "</td><td>" + stats.sp_defense + "</td><td>" + 
+                            stats.speed + "</td><td>" + evo.evolution_num + "</td><td>" + evo.evolve_at + "</td></tr>");
 		        }
             })
         }
+        function searchByName(){
+            console.log("Searching by name...");
+            let name = $("#name").val();
+            console.log("Name: " + name);
+
+            $.get("/getInfoName", {name: name}, function(data){
+                console.log("From server");
+                console.log(data);
+                var dex = data.list[0];
+                dex = dex.pokedex;
+                searchByDex(dex);
+            })
+                
+            }
     </script>
 </body>
 </html>

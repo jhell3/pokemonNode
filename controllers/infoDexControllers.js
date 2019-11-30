@@ -5,8 +5,11 @@ function getInfo(req, res){
     infoModels.getInfo(dex, function(err, results){
         res.json(results)
     })
-        
-    }
+    /*infoModels.getInfoS(dex, function(err, resultsE){
+        res.json(resultsE)
+    })*/  
+
+}
     module.exports = {
         getInfo: getInfo
     }

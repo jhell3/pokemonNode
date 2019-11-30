@@ -2,8 +2,8 @@ const express = require('express');
 //var results = require('./results.js');
 const app = express();
 require('dotenv').config();
-const infoController = require("./controllers/infoControllers");
-
+const infoDexController = require("./controllers/infoDexControllers");
+const infoNameController = require("./controllers/infoNameControllers");
 
 app.set('port', process.env.PORT || 5000)
     .use(express.json())
@@ -12,8 +12,8 @@ app.set('port', process.env.PORT || 5000)
     .get('/', function(req, res){
         res.sendFile('pokemon.html', { root: __dirname + "/public"});
     })
-    .get("/getInfo", infoController.getInfo)
-
+    .get("/getInfo", infoDexController.getInfo)
+    .get("/getInfoName", infoNameController.getInfo)
     .listen(app.get('port'), function() {
         console.log('Listening on port: ' + app.get('port'));
     })
