@@ -20,7 +20,7 @@ function getInfo(dex, callback){
                     console.log("From DB: " + db_results)
         
                     results = {list: db_results.rows, listE: db_results2.rows,            listS: db_results3.rows}
-                    console.log(results);
+                    //console.log(results);
                     callback(null, results)
                 }
             })

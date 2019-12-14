@@ -8,16 +8,16 @@ body{
 table, th, td {
     border: 1px solid black;
     text-align: center;
-    color: black;
+    color: white;
   }
   table {
     border-collapse: collapse;
   }
   tr:nth-child(even) {
-      background-color: aqua;
+      background-color: green;
   }
   tr:nth-child(odd){
-      background-color: lawngreen;
+      background-color: blue;
   }
   tr{
       color:black;

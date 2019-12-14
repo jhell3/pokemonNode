@@ -4,6 +4,7 @@ const app = express();
 require('dotenv').config();
 const infoDexController = require("./controllers/infoDexControllers");
 const infoNameController = require("./controllers/infoNameControllers");
+const infoAllController = require("./controllers/infoAllContollers");
 
 app.set('port', process.env.PORT || 5000)
     .use(express.json())
@@ -14,6 +15,7 @@ app.set('port', process.env.PORT || 5000)
     })
     .get("/getInfo", infoDexController.getInfo)
     .get("/getInfoName", infoNameController.getInfo)
+    .get("/getAll", infoAllController.getInfo)
     .listen(app.get('port'), function() {
         console.log('Listening on port: ' + app.get('port'));
     })
